@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>FilterableList</title>
+</head>
+<body>
+  <div class="container">
+    <header>My Contacts</header>
+    <div class="cont">
+      <input type="text" id="filterInput" required>
+      <label>Search names..</label>
+    </div>
+    <ul id="names" class="collection">
+      <li class="collection-header">
+        A
+      </li>
+      <li class="collection-item">Adam</li>
+      <li class="collection-item">Anny</li>
+      <li class="collection-item">Aunt</li>
+      <li class="collection-header">
+        B
+      </li>
+      <li class="collection-item">Bob</li>
+      <li class="collection-item">Ben</li>
+      <li class="collection-header">
+        C
+      </li>
+      <li class="collection-item">Courtney</li>
+      <li class="collection-item">Cathy</li>
+      <li class="collection-item">Chris</li>
+      <li class="collection-header">
+        E
+      </li>
+      <li class="collection-item">Emma</li>
+      <li class="collection-item">Ellie</li>
+      <li class="collection-item">Emmy</li>
+      <li class="collection-header">
+        R
+      </li>
+      <li class="collection-item">Ron</li>
+      <li class="collection-item">Rambo</li>
+      <li class="collection-header">
+        S
+      </li>
+      <li class="collection-item">Sam</li>
+      <li class="collection-item">Samuel</li>
+    </ul>
+  </div>
+  <script>
+    // Get input element
+    let filterInput = document.getElementById('filterInput');
+    filterInput.addEventListener('keyup',filterNames);
+
+    // Defining function filterNames
+    function filterNames(){
+      filterVal =  document.getElementById('filterInput').value.toUpperCase();
+      
+      // Get names ul
+      ul= document.getElementById('names');
+      // Get lis
+      li = document.querySelectorAll('li.collection-item');
+      // lets compare with all values using loop
+      for (let i = 0; i < li.length; i++) {
+        let val = li[i].textContent;
+        
+        // if value matches to the input
+        if(val.toUpperCase().indexOf(filterVal) > -1){
+          li[i].style.display="";
+        }
+        else{
+          li[i].style.display="none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
